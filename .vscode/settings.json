@@ -1,0 +1,14 @@
+{
+    // Auto-format when you save
+    "editor.formatOnSave": true,
+    // Ensure Dart and Flutter use their formatter
+    "[dart]": {
+        "editor.defaultFormatter": "Dart-Code.dart-code",
+        "editor.formatOnSave": true
+    },
+    // Optional: format when you paste code
+    "editor.formatOnPaste": true,
+    // Auto-insert trailing commas where appropriate
+    "dart.lineLength": 80,
+    "dart.allowTrailingCommas": true
+}

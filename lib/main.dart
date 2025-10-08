@@ -15,6 +15,9 @@ class BooklyApp extends StatelessWidget {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       child: GetMaterialApp(
+        theme: ThemeData(
+          scaffoldBackgroundColor: Colors.white,
+        ),
         debugShowCheckedModeBanner: false,
         home: SplashView(),
       ),

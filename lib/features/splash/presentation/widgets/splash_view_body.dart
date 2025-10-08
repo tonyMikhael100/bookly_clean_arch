@@ -1,9 +1,10 @@
 import 'package:bookly_clean_arch/core/themes/app_text_styles.dart';
-import 'package:bookly_clean_arch/core/themes/helpers/spacing.dart';
+import 'package:bookly_clean_arch/core/helpers/spacing.dart';
 import 'package:bookly_clean_arch/features/onboarding/presentation/views/onboarding_view.dart';
 import 'package:bookly_clean_arch/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -20,7 +21,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
   @override
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const OnboardingView());
+      Get.offAll(() => const OnboardingView());
     });
     super.initState();
   }

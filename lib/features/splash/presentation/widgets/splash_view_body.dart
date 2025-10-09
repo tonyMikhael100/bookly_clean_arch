@@ -47,7 +47,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
               ),
               horizontalSpace(10),
               Text(
-                'Bookly',
+                'Sphere',
                 style: AppTextStyles.font32WhiteBold,
               )
             ],

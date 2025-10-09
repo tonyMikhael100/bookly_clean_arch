@@ -28,10 +28,12 @@ class CustomOnBoardigPage extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         verticalSpace(16),
-        Text(
-          subTitle,
-          textAlign: TextAlign.center,
-          style: AppTextStyles.font16GrayRegular,
+        Expanded(
+          child: Text(
+            subTitle,
+            textAlign: TextAlign.center,
+            style: AppTextStyles.font16GrayRegular,
+          ),
         ),
       ],
     );

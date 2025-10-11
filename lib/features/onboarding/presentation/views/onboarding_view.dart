@@ -8,8 +8,7 @@ import 'package:bookly_clean_arch/main_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingView extends StatefulWidget {
@@ -87,7 +86,7 @@ class _OnboardingViewState extends State<OnboardingView> {
         child: AppButton(
           onPressed: () {
             if (pageController.page == 2) {
-              Get.offAll(() => const MainScaffold());
+              context.pushReplacement('/mainScaffold');
             } else {
               pageController.nextPage(
                 duration: const Duration(milliseconds: 500),

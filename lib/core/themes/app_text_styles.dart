@@ -51,4 +51,15 @@ abstract class AppTextStyles {
     color: ColorManager.darkPrimary,
     fontWeight: FontWeight.bold,
   );
+  static TextStyle font14GreyRegular = TextStyle(
+    fontSize: 14.sp,
+    color: Colors.grey,
+    fontWeight: FontWeight.w500,
+  );
+
+  static TextStyle font16BlackMeduim = TextStyle(
+    fontSize: 16.sp,
+    color: ColorManager.darkPrimary,
+    fontWeight: FontWeight.w500,
+  );
 }

@@ -1,7 +1,7 @@
 import 'package:bookly_clean_arch/core/helpers/spacing.dart';
-import 'package:bookly_clean_arch/features/home/presentation/widgets/home_intro_container.dart';
-import 'package:bookly_clean_arch/features/home/presentation/widgets/home_top_of_the_week_list_view.dart';
-import 'package:bookly_clean_arch/features/home/presentation/widgets/top_of_week_row.dart';
+import 'package:bookly_clean_arch/features/home/presentation/widgets/home/home_intro_container.dart';
+import 'package:bookly_clean_arch/features/home/presentation/widgets/home/home_top_of_the_week_list_view.dart';
+import 'package:bookly_clean_arch/features/home/presentation/widgets/home/top_of_week_row.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 

@@ -1,10 +1,10 @@
+import 'package:bookly_clean_arch/core/routing/app_router.dart';
 import 'package:bookly_clean_arch/features/home/presentation/views/home_view.dart';
 import 'package:bookly_clean_arch/features/splash/presentation/views/splash_view.dart';
 import 'package:bookly_clean_arch/main_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:get/get.dart';
 
 void main() {
   runApp(const BooklyApp());
@@ -23,15 +23,17 @@ class BooklyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return ScreenUtilInit(
       designSize: const Size(375, 812),
-      child: GetMaterialApp(
+      child: MaterialApp.router(
         theme: ThemeData(
           scaffoldBackgroundColor: Colors.white,
+          // remove splash effect (ripple effect)
+          splashFactory: NoSplash.splashFactory,
           bottomNavigationBarTheme: const BottomNavigationBarThemeData(
             backgroundColor: Colors.white,
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home: MainScaffold(),
+        routerConfig: AppRouter.router,
       ),
     );
   }

@@ -1,5 +1,5 @@
-import 'package:bookly_clean_arch/features/home/presentation/widgets/home_app_bar.dart';
-import 'package:bookly_clean_arch/features/home/presentation/widgets/home_view_body.dart';
+import 'package:bookly_clean_arch/features/home/presentation/widgets/home/home_app_bar.dart';
+import 'package:bookly_clean_arch/features/home/presentation/widgets/home/home_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

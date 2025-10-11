@@ -11,6 +11,7 @@ class AppButton extends StatelessWidget {
   final double? width;
   final double? height;
   final double borderRadius;
+  final Color? textColor;
 
   const AppButton({
     super.key,
@@ -21,6 +22,7 @@ class AppButton extends StatelessWidget {
     this.width,
     this.height,
     this.borderRadius = 12,
+    this.textColor,
   });
 
   @override
@@ -36,7 +38,8 @@ class AppButton extends StatelessWidget {
       ),
       child: Text(
         text,
-        style: textStyle ?? AppTextStyles.font16WhiteBold,
+        style: textStyle ??
+            AppTextStyles.font16WhiteBold.copyWith(color: textColor),
       ),
     );
   }

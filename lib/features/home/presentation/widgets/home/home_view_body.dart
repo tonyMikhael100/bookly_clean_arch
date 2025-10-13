@@ -1,7 +1,7 @@
 import 'package:bookly_clean_arch/core/helpers/spacing.dart';
 import 'package:bookly_clean_arch/features/home/presentation/widgets/home/home_intro_container.dart';
-import 'package:bookly_clean_arch/features/home/presentation/widgets/home/home_top_of_the_week_list_view.dart';
-import 'package:bookly_clean_arch/features/home/presentation/widgets/home/top_of_week_row.dart';
+import 'package:bookly_clean_arch/features/home/presentation/widgets/home/home_books_list_view.dart';
+import 'package:bookly_clean_arch/features/home/presentation/widgets/home/home_title_row.dart.dart';
 import 'package:flutter/material.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -21,16 +21,22 @@ class HomeViewBody extends StatelessWidget {
               HomeIntroContainer(),
               verticalSpace(24),
               // Top of week Section
-              TopOfWeekRow(),
+              HomeTitleRow(
+                title: 'Newest Books',
+                onTap: () {},
+              ),
               verticalSpace(16),
               // List top of weeks books
-              const HomeTopOfTheWeekListView(),
+              const HomeBooksListView(),
               verticalSpace(24),
               // Top of week Section
-              TopOfWeekRow(),
+              HomeTitleRow(
+                title: 'Top of the week books',
+                onTap: () {},
+              ),
               verticalSpace(16),
               // List top of weeks books
-              const HomeTopOfTheWeekListView(),
+              const HomeBooksListView(),
             ],
           ),
         ),

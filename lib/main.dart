@@ -1,7 +1,9 @@
+import 'package:bookly_clean_arch/core/networking/api_service.dart';
 import 'package:bookly_clean_arch/core/routing/app_router.dart';
 import 'package:bookly_clean_arch/features/home/presentation/views/home_view.dart';
 import 'package:bookly_clean_arch/features/splash/presentation/views/splash_view.dart';
 import 'package:bookly_clean_arch/main_scaffold.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,6 +16,12 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+  //test apis
+  // ApiService(Dio()).fetchSearchedBooks('flutter').then((value) {
+  //   debugPrint(value.books[0].title);
+  // });
+  
 }
 
 class BooklyApp extends StatelessWidget {

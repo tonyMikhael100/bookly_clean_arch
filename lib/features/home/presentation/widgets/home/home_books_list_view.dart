@@ -5,8 +5,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeTopOfTheWeekListView extends StatelessWidget {
-  const HomeTopOfTheWeekListView({super.key});
+class HomeBooksListView extends StatelessWidget {
+  const HomeBooksListView({super.key});
 
   @override
   Widget build(BuildContext context) {

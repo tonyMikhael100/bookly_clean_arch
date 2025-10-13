@@ -11,4 +11,9 @@
     // Auto-insert trailing commas where appropriate
     "dart.lineLength": 80,
     "dart.allowTrailingCommas": true
+    // hide generated files
+    ,
+    "files.exclude": {
+        "**/*.g.dart": true
+    }
 }

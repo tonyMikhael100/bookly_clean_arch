@@ -30,6 +30,8 @@ void main() async {
   // ApiService(Dio()).fetchSearchedBooks('flutter').then((value) {
   //   debugPrint(value.books[0].title);
   // });
+
+  HomeRemoteDataSourceImpl(apiService: ApiService(Dio())).fetchNewestBooks();
 }
 
 class BooklyApp extends StatelessWidget {

@@ -1,5 +1,7 @@
 import 'package:bookly_clean_arch/core/networking/api_service.dart';
+import 'package:bookly_clean_arch/core/utils/functions/save_data_into_hive.dart';
 import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
+import 'package:hive/hive.dart';
 
 abstract class HomeRemoteDataSource {
   Future<List<BookEntity>> fetchTopOfTheWeekBooks();
@@ -18,6 +20,8 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
       //becaues the bookModel is BookEntity so we can add it directly
       books.add(response.books[i]);
     }
+    await saveDataIntoHive(data: books, boxName: 'bookBox');
+
     return books;
   }
 
@@ -29,6 +33,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
       //becaues the bookModel is BookEntity so we can add it directly
       books.add(response.books[i]);
     }
+    await saveDataIntoHive(data: books, boxName: 'bookBox');
     return books;
   }
 }

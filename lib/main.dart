@@ -1,5 +1,6 @@
 import 'package:bookly_clean_arch/core/networking/api_service.dart';
 import 'package:bookly_clean_arch/core/routing/app_router.dart';
+import 'package:bookly_clean_arch/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:bookly_clean_arch/features/home/presentation/views/home_view.dart';
 import 'package:bookly_clean_arch/features/splash/presentation/views/splash_view.dart';
 import 'package:bookly_clean_arch/main_scaffold.dart';
@@ -21,7 +22,6 @@ void main() {
   // ApiService(Dio()).fetchSearchedBooks('flutter').then((value) {
   //   debugPrint(value.books[0].title);
   // });
-  
 }
 
 class BooklyApp extends StatelessWidget {

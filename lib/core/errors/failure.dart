@@ -5,26 +5,47 @@ class Failure {
   Failure({required this.error});
 }
 
-class DioFailure extends Failure {
-  DioFailure({required super.error});
-  factory DioFailure.handleError(DioException dioException) {
+class ServerFailure extends Failure {
+  ServerFailure({
+    required super.error,
+  });
+  factory ServerFailure.handleError(DioException dioException) {
     switch (dioException.type) {
       case DioExceptionType.connectionTimeout:
-        return DioFailure(error: "Connection timeout");
+        return ServerFailure(error: "Connection timeout");
       case DioExceptionType.sendTimeout:
-        return DioFailure(error: "Send timeout");
+        return ServerFailure(error: "Send timeout");
       case DioExceptionType.receiveTimeout:
-        return DioFailure(error: "Receive timeout");
+        return ServerFailure(error: "Receive timeout");
       case DioExceptionType.badResponse:
-        return DioFailure(error: "Bad response");
+        return handleResponse(dioException);
       case DioExceptionType.cancel:
-        return DioFailure(error: "Request cancelled");
+        return ServerFailure(error: "Request cancelled");
       case DioExceptionType.connectionError:
-        return DioFailure(error: "Connection error");
+        return ServerFailure(error: "Connection error");
       case DioExceptionType.badCertificate:
-        return DioFailure(error: "Bad certificate");
+        return ServerFailure(error: "Bad certificate");
       case DioExceptionType.unknown:
-        return DioFailure(error: "Unknown error");
+        return ServerFailure(error: "Unknown error");
+    }
+  }
+
+  static ServerFailure handleResponse(DioException dioException) {
+    final statusCode = dioException.response?.statusCode;
+    switch (statusCode) {
+      case 400:
+        return ServerFailure(error: "Bad request");
+      case 401:
+        return ServerFailure(error: "email or password are incorrect ");
+      case 403:
+        return ServerFailure(error: "Forbidden");
+      case 404:
+        return ServerFailure(error: "Not found");
+      case 500:
+        return ServerFailure(error: "Internal server error");
+      default:
+        return ServerFailure(
+            error: "Received invalid status code: $statusCode");
     }
   }
 }

@@ -1,5 +1,6 @@
 import 'package:bookly_clean_arch/core/helpers/spacing.dart';
 import 'package:bookly_clean_arch/core/themes/app_text_styles.dart';
+import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
 import 'package:bookly_clean_arch/features/home/presentation/views/book_details_view.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class BookItem extends StatelessWidget {
   const BookItem({
     super.key,
+    required this.book,
   });
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class BookItem extends StatelessWidget {
           backgroundColor: Colors.transparent,
           enableDrag: true,
           isScrollControlled: true, // This allows full height
-          builder: (context) => BookDetailsView(),
+          builder: (context) => BookDetailsView(book: book,),
         );
       },
       child: SizedBox(
@@ -33,8 +36,7 @@ class BookItem extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
                   child: CachedNetworkImage(
-                    imageUrl:
-                        'https://images.penguinrandomhouse.com/cover/9780525529156',
+                    imageUrl: book.bookImageUrl,
                     fit: BoxFit.cover, // cover is usually better than fill
                   ),
                 ),
@@ -42,13 +44,13 @@ class BookItem extends StatelessWidget {
             ),
             verticalSpace(5),
             Text(
-              '  The Kite Runner',
+              '  ${book.bookTitle}',
               style: AppTextStyles.font14BlackMeduim,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
             Text(
-              '   \$14.99',
+              '   ${book.bookPrice}',
               style: AppTextStyles.font12BlackBold,
             )
           ],

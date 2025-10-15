@@ -1,8 +1,11 @@
 import 'package:bookly_clean_arch/core/helpers/spacing.dart';
+import 'package:bookly_clean_arch/features/home/presentation/manager/newest_books_cubit/newest_books_cubit.dart';
 import 'package:bookly_clean_arch/features/home/presentation/widgets/home/home_intro_container.dart';
 import 'package:bookly_clean_arch/features/home/presentation/widgets/home/home_books_list_view.dart';
 import 'package:bookly_clean_arch/features/home/presentation/widgets/home/home_title_row.dart.dart';
+import 'package:bookly_clean_arch/features/home/presentation/widgets/home/loading_list.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -13,32 +16,45 @@ class HomeViewBody extends StatelessWidget {
     return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Skeletonizer(
-          enabled: false,
-          child: Column(
-            children: [
-              verticalSpace(24),
-              HomeIntroContainer(),
-              verticalSpace(24),
-              // Top of week Section
-              HomeTitleRow(
-                title: 'Newest Books',
-                onTap: () {},
-              ),
-              verticalSpace(16),
-              // List top of weeks books
-              const HomeBooksListView(),
-              verticalSpace(24),
-              // Top of week Section
-              HomeTitleRow(
-                title: 'Top of the week books',
-                onTap: () {},
-              ),
-              verticalSpace(16),
-              // List top of weeks books
-              const HomeBooksListView(),
-            ],
-          ),
+        child: Column(
+          children: [
+            verticalSpace(24),
+            HomeIntroContainer(),
+            verticalSpace(24),
+            // Top of week Section
+            HomeTitleRow(
+              title: 'Newest Books',
+              onTap: () {},
+            ),
+            verticalSpace(16),
+            // List of newestt books
+            BlocBuilder<NewestBooksCubit, NewestBooksState>(
+              builder: (context, state) {
+                if (state is NewestBooksLoadingState) {
+                  return LoadingList();
+                } else if (state is NewestBooksFailureState) {
+                  return Center(
+                    child: Text(
+                      'there is an erro : ${state.erroMessage} ',
+                    ),
+                  );
+                } else if (state is NewestBooksSuccessState) {
+                  return HomeBooksListView(books: state.booksList);
+                } else {
+                  return SizedBox.shrink();
+                }
+              },
+            ),
+            verticalSpace(24),
+            // Top of week Section
+            HomeTitleRow(
+              title: 'Top of the week books',
+              onTap: () {},
+            ),
+            verticalSpace(16),
+            // List top of weeks books
+            const LoadingList(),
+          ],
         ),
       ),
     );

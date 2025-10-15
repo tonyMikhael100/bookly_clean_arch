@@ -2,14 +2,17 @@ import 'package:bookly_clean_arch/core/helpers/spacing.dart';
 import 'package:bookly_clean_arch/core/themes/app_text_styles.dart';
 import 'package:bookly_clean_arch/core/themes/color_manager.dart';
 import 'package:bookly_clean_arch/core/widgets/app_button.dart';
+import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
 import 'package:bookly_clean_arch/features/home/presentation/widgets/book_details/bottom_sheet_close_item.dart';
 import 'package:bookly_clean_arch/features/home/presentation/widgets/book_details/star_row_builder.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key});
+  const BookDetailsView({super.key, required this.book});
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {
@@ -37,14 +40,12 @@ class BookDetailsView extends StatelessWidget {
                   height: 313.h,
                   width: 237.w,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16.r),
-                    color: Colors.grey,
-                    image: const DecorationImage(
-                      image: NetworkImage(
-                        'https://images.penguinrandomhouse.com/cover/9780525529156',
-                      ),
-                      fit: BoxFit.cover,
-                    ),
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  child: CachedNetworkImage(
+                    imageUrl: book.bookImageUrl,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ),
@@ -52,11 +53,15 @@ class BookDetailsView extends StatelessWidget {
               // Title and heart icon
               Row(
                 children: [
-                  Text(
-                    'The Kite Runner',
-                    style: AppTextStyles.font20BlackBold,
+                  Expanded(
+                    child: Text(
+                      book.bookTitle,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppTextStyles.font20BlackBold,
+                    ),
                   ),
-                  const Spacer(),
+                  horizontalSpace(8),
                   SvgPicture.asset('assets/svgs/heart_fill.svg',
                       height: 24.h, width: 24.w),
                 ],
@@ -64,7 +69,7 @@ class BookDetailsView extends StatelessWidget {
               verticalSpace(16),
               // Description
               Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra dignissim ac ac ac. Nibh et sed ac, eget malesuada.',
+                book.bookSubTitle,
                 maxLines: 3,
                 overflow: TextOverflow.ellipsis,
                 style: AppTextStyles.font14GreyRegular,
@@ -122,7 +127,7 @@ class BookDetailsView extends StatelessWidget {
                     ),
                   ),
                   horizontalSpace(16),
-                  Text('\$14.99', style: AppTextStyles.font16BlackMeduim),
+                  Text(book.bookPrice, style: AppTextStyles.font16BlackMeduim),
                 ],
               ),
               verticalSpace(10),

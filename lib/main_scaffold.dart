@@ -16,10 +16,10 @@ class _MainScaffoldState extends State<MainScaffold> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const HomeView(),
-    const HomeView(),
-    const HomeView(),
-    const HomeView(),
+    HomeView(),
+    HomeView(),
+    HomeView(),
+    HomeView(),
   ];
 
   void _onItemTapped(int index) {

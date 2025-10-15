@@ -16,7 +16,7 @@ class HomeView extends StatelessWidget {
         ),
       ),
       body: SafeArea(
-        child: const HomeViewBody(),
+        child: HomeViewBody(),
       ),
     );
   }

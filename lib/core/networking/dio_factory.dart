@@ -22,12 +22,6 @@ class DioFactory {
     }
   }
 
-  static void setTokenIntoHeaderAfterLogin(String token) {
-    dio?.options.headers = {
-      'Authorization': 'Bearer $token',
-    };
-  }
-
 // for pretty dio logger
   static void addDioInterceptor() {
     dio?.interceptors.add(

@@ -34,7 +34,7 @@ class _ApiService implements ApiService {
     )
             .compose(
               _dio.options,
-              'search/mongodb',
+              'search/flutter',
               queryParameters: queryParameters,
               data: _data,
             )

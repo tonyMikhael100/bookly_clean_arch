@@ -2,7 +2,6 @@
 
 import 'package:bookly_clean_arch/core/di/dependency_injection.dart';
 import 'package:bookly_clean_arch/core/networking/api_service.dart';
-import 'package:bookly_clean_arch/features/home/data/data_source/home_local_data_source.dart';
 import 'package:bookly_clean_arch/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:bookly_clean_arch/features/home/data/repo/home_repo_imp.dart';
 import 'package:bookly_clean_arch/features/home/domain/repo/home_repo.dart';

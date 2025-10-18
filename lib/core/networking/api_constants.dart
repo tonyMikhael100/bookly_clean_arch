@@ -1,7 +1,7 @@
 class ApiConstants {
   static const String baseUrl = "https://api.itbook.store/1.0/";
   static const String newestBooks = "new";
-  static const String topOfTheWeekBooks = "search/mongodb";
+  static const String topOfTheWeekBooks = "search/flutter";
   static const String searchBook = "search";
 }
 

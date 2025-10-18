@@ -1,7 +1,6 @@
 import 'package:bookly_clean_arch/core/di/dependency_injection.dart';
 import 'package:bookly_clean_arch/core/networking/api_service.dart';
 import 'package:bookly_clean_arch/core/routing/app_router.dart';
-import 'package:bookly_clean_arch/core/services/shared_pref_service.dart';
 import 'package:bookly_clean_arch/features/home/data/data_source/home_remote_data_source.dart';
 import 'package:bookly_clean_arch/features/home/domain/entities/book_entity.dart';
 import 'package:bookly_clean_arch/features/home/domain/use_cases/fetch_top_of_the_week_books_use_case.dart';
@@ -31,13 +30,11 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   Hive.openBox<BookEntity>('bookBox');
-  Hive.openBox<Map<String, dynamic>>('settings');
+  await Hive.openBox('settings');
 
   // Initialize dependency injection
   getItSetUp();
 
-// setup shared pred
-  await SharedPrefsService.init();
   // Run the app AFTER setup
   runApp(const BooklyApp());
 }

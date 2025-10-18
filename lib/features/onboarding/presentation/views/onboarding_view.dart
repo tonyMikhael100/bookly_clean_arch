@@ -1,5 +1,4 @@
 import 'package:bookly_clean_arch/core/helpers/spacing.dart';
-import 'package:bookly_clean_arch/core/services/shared_pref_service.dart';
 import 'package:bookly_clean_arch/core/themes/app_text_styles.dart';
 import 'package:bookly_clean_arch/core/themes/color_manager.dart';
 import 'package:bookly_clean_arch/core/widgets/app_button.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingView extends StatefulWidget {
@@ -88,7 +88,8 @@ class _OnboardingViewState extends State<OnboardingView> {
           onPressed: () async {
             if (pageController.page == 2) {
               context.pushReplacement('/mainScaffold');
-              await SharedPrefsService().setValue('onBoardingDone', true);
+              var settingsBox = Hive.box('settings');
+              settingsBox.put('onBoardingDone', true);
             } else {
               pageController.nextPage(
                 duration: const Duration(milliseconds: 500),

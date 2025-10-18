@@ -31,7 +31,10 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      
+      //  when i click anywhere unfocus textfield
+      onTapOutside: (event) {
+        FocusScope.of(context).unfocus();
+      },
       controller: controller,
       keyboardType: keyboardType,
       obscureText: obscureText,

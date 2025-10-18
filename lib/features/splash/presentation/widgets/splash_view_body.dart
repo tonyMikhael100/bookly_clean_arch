@@ -1,3 +1,4 @@
+import 'package:bookly_clean_arch/core/services/shared_pref_service.dart';
 import 'package:bookly_clean_arch/core/themes/app_text_styles.dart';
 import 'package:bookly_clean_arch/core/helpers/spacing.dart';
 import 'package:bookly_clean_arch/features/onboarding/presentation/views/onboarding_view.dart';
@@ -18,12 +19,24 @@ class SplashViewBody extends StatefulWidget {
 
 class _SplashViewBodyState extends State<SplashViewBody> {
   @override
+  @override
   void initState() {
-    Future.delayed(const Duration(seconds: 3), () {
-      context.pushReplacement('/onboardingView');
-    });
-
     super.initState();
+
+// to wait flutter for building the ui first then you can navigate , its important line
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      bool? onBoardingDone =
+          SharedPrefsService().getValue<bool>('onBoardingDone');
+      if (onBoardingDone == true) {
+        Future.delayed(const Duration(seconds: 3), () {
+          context.pushReplacement('/mainScaffold');
+        });
+      } else {
+        Future.delayed(const Duration(seconds: 3), () {
+          context.pushReplacement('/onboardingView');
+        });
+      }
+    });
   }
 
   @override

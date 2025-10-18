@@ -1,4 +1,5 @@
 import 'package:bookly_clean_arch/core/helpers/spacing.dart';
+import 'package:bookly_clean_arch/core/services/shared_pref_service.dart';
 import 'package:bookly_clean_arch/core/themes/app_text_styles.dart';
 import 'package:bookly_clean_arch/core/themes/color_manager.dart';
 import 'package:bookly_clean_arch/core/widgets/app_button.dart';
@@ -84,9 +85,10 @@ class _OnboardingViewState extends State<OnboardingView> {
         height: 120.h,
         alignment: Alignment.center,
         child: AppButton(
-          onPressed: () {
+          onPressed: () async {
             if (pageController.page == 2) {
               context.pushReplacement('/mainScaffold');
+              await SharedPrefsService().setValue('onBoardingDone', true);
             } else {
               pageController.nextPage(
                 duration: const Duration(milliseconds: 500),

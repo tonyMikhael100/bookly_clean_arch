@@ -19,7 +19,6 @@ class _MainScaffoldState extends State<MainScaffold> {
     HomeView(),
     HomeView(),
     HomeView(),
-    HomeView(),
   ];
 
   void _onItemTapped(int index) {
@@ -53,22 +52,9 @@ class _MainScaffoldState extends State<MainScaffold> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(
-              'assets/svgs/Document.svg',
-            ),
-            icon: SvgPicture.asset(
-              'assets/svgs/Document.svg',
-              color: Colors.grey,
-            ),
-            label: 'Categories',
-          ),
-          BottomNavigationBarItem(
-            activeIcon: SvgPicture.asset(
-              'assets/svgs/Cart-Fill.svg',
-            ),
-            icon: SvgPicture.asset('assets/svgs/Cart-Fill.svg',
-                color: Colors.grey),
-            label: 'Cart',
+            activeIcon: Icon(Icons.favorite),
+            icon: Icon(Icons.favorite),
+            label: 'Favourites',
           ),
           BottomNavigationBarItem(
             activeIcon: SvgPicture.asset(
